@@ -1,9 +1,16 @@
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import StudentPage from "./components/StudentPage";
+import Navbar from "./components/Navbar";
 import './App.css'
 
 const App = () => {
   return <div className="App"> 
-    <StudentPage />
+  <BrowserRouter>
+    <Navbar />
+    <Switch>
+      <Route exact path="/student" component={StudentPage}/>
+    </Switch>
+  </BrowserRouter>
   </div>
 }
 
