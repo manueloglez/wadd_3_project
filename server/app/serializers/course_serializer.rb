@@ -1,0 +1,10 @@
+class CourseSerializer < ActiveModel::Serializer
+  attributes :id, :name, :topic
+
+  belongs_to :user, key: :teacher
+
+  class UserSerializer < ActiveModel::Serializer
+    attributes :id, :first_name, :last_name, :full_name, :created_at, :updated_at
+  end
+  
+end
