@@ -8,7 +8,7 @@ const App = () => {
   <BrowserRouter>
     <Navbar />
     <Switch>
-      <Route exact path="/student" component={StudentPage}/>
+      <Route exact path="/students" component={StudentPage}/>
     </Switch>
   </BrowserRouter>
   </div>
