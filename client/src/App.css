@@ -10,3 +10,8 @@
 .courses-container {
   width: 45vw;
 }
+
+.course-details-container {
+  display: flex;
+  align-items: center;
+}
