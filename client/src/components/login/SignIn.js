@@ -16,7 +16,7 @@ const SignIn = (props) => {
     Session.create(params).then(data => {
       if (data.id) {
         onSignIn()
-        props.history.push('/')
+        props.history.push('/students')
       }
     })
   }
