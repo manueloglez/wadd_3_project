@@ -39,7 +39,7 @@ const App = () => {
     <Switch>
       <Route exact path="/students" component={StudentPage}/>
       <Route exact path='/SignIn' render={(routeProps)=><SignIn {...routeProps} onSignIn={getCurrentUser}/>} />
-      <Route exact path="/SignUp" component={SignUp}/>
+      <Route exact path='/SignUp' render={(routeProps)=><SignUp {...routeProps} onSignUp={getCurrentUser}/>} />
     </Switch>
   </BrowserRouter>
   </div>
