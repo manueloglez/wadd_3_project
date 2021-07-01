@@ -1,6 +1,5 @@
 class Api::V1::UsersController < Api::ApplicationController
     def create
-        user_params = params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
         user = User.new user_params
     
         if user.save
@@ -8,13 +7,22 @@ class Api::V1::UsersController < Api::ApplicationController
           render json: { id: user.id }
         else
           render(
-            json: { errors: user.errors.messages },
+            json: { status: 422 },
             status: 422, # Unprocessable Entity
           )
         end
+        
       end
     
       def current
         render json: current_user
+      end
+
+      private
+
+      def user_params
+        params.require(:user).permit(
+          :first_name, :last_name, :email, :password, :password_confirmation
+        )
       end
 end

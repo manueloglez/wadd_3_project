@@ -9,7 +9,8 @@
 
 PASSWORD = "supersecret"
 
-User.delete_all
+Course.destroy_all()
+User.delete_all()
 
 super_user = User.create(
   first_name: "Jon",
@@ -19,7 +20,7 @@ super_user = User.create(
   isAdmin: true,
 )
 
-10.times do
+10.times do |x|
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -30,5 +31,15 @@ end
 
 users = User.all
 
+15.times do |x|
+    course = Course.create({
+    name: Faker::Educator.course_name,
+    topic: Faker::Educator.subject,
+    user: users.sample,
+  })
+end
+  courses = Course.all
+
 puts Cowsay.say("Generated #{User.count} users", :ghostbusters)
 puts Cowsay.say("Sign in with #{super_user.email} and password: #{PASSWORD}", :cow)
+puts Cowsay.say("Generated #{courses.count}  courses!", :turtle)
