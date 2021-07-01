@@ -57,6 +57,7 @@ const SignUp = () => {
 <div> <div>
         <input type="radio" value="Student" name="Select" /> Student
         <input type="radio" value="Teacher" name="Select" /> Teacher
+        <input type="radio" value="Admin" name="Select" /> Admin
       </div></div>
  <button type="button" className="btn btn-secondary btn-block">SignUp</button>
  <div className="message">

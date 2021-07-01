@@ -15,3 +15,7 @@
   display: flex;
   align-items: center;
 }
+
+nav {
+  background: linear-gradient(to left, rgb(10, 114, 65), white);
+}
