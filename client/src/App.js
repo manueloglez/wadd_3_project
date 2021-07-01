@@ -10,7 +10,7 @@ const App = () => {
   <BrowserRouter>
     <Navbar />
     <Switch>
-      <Route exact path="/student" component={StudentPage}/>
+      <Route exact path="/students" component={StudentPage}/>
     </Switch>
     <Switch>
       <Route exact path="/SignIn" component={SignIn}/>
