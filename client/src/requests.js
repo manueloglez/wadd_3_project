@@ -105,6 +105,14 @@ export const Course = {
 }
 
 export const Enrollment = {
+  index() {
+    return fetch(`${BASE_URL}/enrollments`, {
+      method: "GET", 
+      headers: {
+        "Cache-Control": "no-cache",
+      },
+    }).then(res => res.json())
+  },
   delete(id) {
     return fetch(`${BASE_URL}/enrollments/${id}`, {
       method: "DELETE",
@@ -113,5 +121,17 @@ export const Enrollment = {
         "Content-Type": "application/json",
       },
     }).then((res) => res.json())
+  },
+  update(id, params) {
+    return fetch(`${BASE_URL}/enrollments/${id}`, {
+      method: "PATCH",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(params),
+    })
+      .then((res) => res.json())
+      .catch(console.error);
   }
 }

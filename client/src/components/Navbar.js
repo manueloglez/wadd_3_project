@@ -9,7 +9,7 @@ const Navbar = (props) => {
     {currentUser ? <NavLink to="/students">Student Page</NavLink> : ''}
 
     {currentUser && currentUser.isTeacher ? 
-    <NavLink to="/teacher">Teacher Page</NavLink> : ''}
+    <NavLink to="/teachers">Teacher Page</NavLink> : ''}
 
     {currentUser && currentUser.isAdmin ? 
     <NavLink to="/admin">Admin Page</NavLink> : ''}
