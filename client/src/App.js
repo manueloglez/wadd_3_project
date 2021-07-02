@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import StudentPage from "./components/StudentPage";
+import TeacherPage from './components/TeacherPage'
 import Navbar from "./components/Navbar";
 import SignUp from "./components/login/SignUp";
 import SignIn from "./components/login/SignIn";
@@ -38,6 +39,7 @@ const App = () => {
     <Navbar currentUser={state.user} destroySession={destroySession}/>
     <Switch>
       <Route exact path="/students" component={StudentPage}/>
+      <Route exact path="/teachers" component={TeacherPage}/>
       <Route exact path='/SignIn' render={(routeProps)=><SignIn {...routeProps} onSignIn={getCurrentUser}/>} />
       <Route exact path='/SignUp' render={(routeProps)=><SignUp {...routeProps} onSignUp={getCurrentUser}/>} />
     </Switch>
