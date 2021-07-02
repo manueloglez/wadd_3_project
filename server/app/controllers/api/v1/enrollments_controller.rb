@@ -1,6 +1,6 @@
 class Api::V1::EnrollmentsController < Api::ApplicationController
     before_action :find_enrollment, only: [:destroy, :update]
-    before_action :authenticate_user!
+    before_action :authenticate_user!, only: [:create, :update, :destroy]
 
     def index
       enrollments = Enrollment.order(created_at: :desc)
