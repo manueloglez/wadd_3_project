@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
-    has_many :courses, dependent: :nullify
+    has_many :courses, dependent: :destroy
+    has_many :enrollments, dependent: :destroy
+    has_many :enrolled_courses, through: :enrollments, source: :course
 
     # Validations
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i

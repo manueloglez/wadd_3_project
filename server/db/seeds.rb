@@ -8,7 +8,7 @@
 
 
 PASSWORD = "supersecret"
-
+Enrollment.destroy_all()
 Course.destroy_all()
 User.delete_all()
 
@@ -40,6 +40,16 @@ users = User.all
 end
   courses = Course.all
 
+  5.times do |x|
+    Enrollment.create({
+      status: "pending",
+      course: courses.sample,
+      user: users.sample,
+    })
+  end
+  enrollments = Enrollment.all
+
 puts Cowsay.say("Generated #{User.count} users", :ghostbusters)
 puts Cowsay.say("Sign in with #{super_user.email} and password: #{PASSWORD}", :cow)
 puts Cowsay.say("Generated #{courses.count}  courses!", :turtle)
+puts Cowsay.say("Generated #{enrollments.count}  enrollments!", :bunny)
