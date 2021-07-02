@@ -6,7 +6,7 @@ class Course < ApplicationRecord
   before_validation :capitalize_name
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 10 }
-  validates :topic, presence: true, length: { minimum: 10 }
+  validates :topic, presence: true
 
   private
 
