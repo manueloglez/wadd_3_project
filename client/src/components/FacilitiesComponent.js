@@ -6,13 +6,13 @@ import SearchBar from './SearchBar'
 const FacilitiesComponent = ({facilities}) => {
   const [input, setInput] = useState('');
 
-  const updateCourseData = (value) => {
+  const updateFacilityData = (value) => {
     setInput(value)
   }
 
   return <>
     <h1>Facilities List</h1>
-    <SearchBar input={input} updateCourseData={updateCourseData}/>
+    <SearchBar input={input} onChange={updateFacilityData}/>
     {facilities.filter(facility => {
       return(input !== '' ? 
       facility.name.toLowerCase().includes(input.toLowerCase()) ||

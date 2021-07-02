@@ -1,11 +1,11 @@
 import React from 'react';
 
-const SearchBar = ({updateCourseData}) => {
+const SearchBar = ({onChange}) => {
   const BarStyling = {width:"20rem",background:"#F2F1F9", border:"none", padding:"0.5rem"};
   
   function handleCourseInput(event) {
     const { value } = event.currentTarget;
-    updateCourseData(value);
+    onChange(value);
   }
 
   return (

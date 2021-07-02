@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import facilityList from '../data/facilities'
 import courseList from '../data/courses'
+import enrollmentList from '../data/enrollments'
 import FacilitiesComponent from './FacilitiesComponent'
+import EnrollmentsComponent from './EnrollmentsComponent'
 import AllCourses from './AllCourses'
 
 const StudentPage = () => {
@@ -17,6 +19,7 @@ const StudentPage = () => {
     <div className="teacher-dashboard">
       <AllCourses courses={courseList.filter(c => c.teacher.id === currentUser.id)}/>
       <FacilitiesComponent facilities={state.facilities}/>
+      <EnrollmentsComponent enrollments={enrollmentList} />
     </div>
   </main>
 }
