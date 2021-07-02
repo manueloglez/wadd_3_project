@@ -6,6 +6,7 @@ import AdminPage from './components/AdminPage';
 import Navbar from "./components/Navbar";
 import SignUp from "./components/login/SignUp";
 import SignIn from "./components/login/SignIn";
+import AuthRoute from './components/AuthRoute';
 import { User, Session } from './requests';
 import './App.css'
 
@@ -39,7 +40,9 @@ const App = () => {
   <BrowserRouter>
     <Navbar currentUser={state.user} destroySession={destroySession}/>
     <Switch>
-      <Route exact path="/students" component={StudentPage}/>
+    <AuthRoute exact path="/students" 
+          isAuthenticated={state.user}
+          component={StudentPage}/>
       <Route exact path="/teachers" component={TeacherPage}/>
       <Route exact path="/admin" component={AdminPage}/>
       <Route exact path='/SignIn' render={(routeProps)=><SignIn {...routeProps} onSignIn={getCurrentUser}/>} />
