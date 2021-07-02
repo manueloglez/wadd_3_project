@@ -17,7 +17,6 @@ const App = () => {
     return User.current().then(user => {
       if (user?.id) { 
         setState(state => {
-          console.log(user)
           return { user }
         })
       }
@@ -40,10 +39,12 @@ const App = () => {
   <BrowserRouter>
     <Navbar currentUser={state.user} destroySession={destroySession}/>
     <Switch>
-    <AuthRoute exact path="/students" 
-          isAuthenticated={state.user}
-          component={StudentPage}/>
-      <Route exact path="/teachers" component={TeacherPage}/>
+      <AuthRoute exact path="/students" 
+        isAuthenticated={state.user}
+        component={StudentPage}/>
+      <AuthRoute exact path="/teachers" 
+        isAuthenticated={state.user}
+        component={TeacherPage}/>
       <Route exact path="/admin" component={AdminPage}/>
       <Route exact path='/SignIn' render={(routeProps)=><SignIn {...routeProps} onSignIn={getCurrentUser}/>} />
       <Route exact path='/SignUp' render={(routeProps)=><SignUp {...routeProps} onSignUp={getCurrentUser}/>} />

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useReducer} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Course} from '../requests'
 import AllCourses from './AllCourses'
 
@@ -8,12 +8,8 @@ const StudentPage = ({currentUser}) => {
 
   const rerender = () => {
     setTrigger(!trigger)
-    console.log('trying to update')
   }
-
-  useEffect(() => {
-    console.log(`The status of trigger changed to ${trigger}`)
-  })
+  
   useEffect(() => {
     if(trigger){
       Course.index().then(courseList => {
