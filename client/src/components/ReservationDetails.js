@@ -1,9 +1,9 @@
 import React from 'react'
 
 const ReservationDetails = (props) => {
-  const {teacher, status, facility, currentUser} = props
+  const {teacher, status, facility, startTime, endTime} = props
   return <div>
-    <h3>{teacher.name} - {facility.start_time} - {facility.end_time} -- Approve - Deny</h3>
+    <h3>{teacher.full_name} - {new Date(startTime).toLocaleString()} - {new Date(endTime).toLocaleString()} -- Approve - Deny</h3>
   </div>
 }
 
