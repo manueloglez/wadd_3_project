@@ -8,12 +8,15 @@ import EnrollmentsComponent from './EnrollmentsComponent'
 import ReservationsComponent from './ReservationsComponent'
 import AllCourses from './AllCourses'
 
-const StudentPage = () => {
+const TeacherPage = () => {
   const [state, setState] = useState({facilities: [], courses: []})
   const currentUser = {id: 14}
   useEffect(() => {
     setState(state => {
-      return({facilities: facilityList})
+      return({
+        facilities: facilityList,
+        courses: courseList
+      })
     })
   }, [])
   return <main>
@@ -27,4 +30,4 @@ const StudentPage = () => {
   </main>
 }
 
-export default StudentPage
+export default TeacherPage
