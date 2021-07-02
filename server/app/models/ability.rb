@@ -43,7 +43,7 @@ class Ability
     end
 
     can :destroy, Enrollment do |enrollment|
-      enrollment.course.user == user
+      enrollment.user == user
     end
 
 
