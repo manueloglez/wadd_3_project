@@ -9,10 +9,14 @@ class CourseSerializer < ActiveModel::Serializer
   has_many :enrollments
 
   class EnrollmentSerializer < ActiveModel::Serializer
-    attributes(:id, :student, :status, :created_at, :updated_at,)
+    attributes(:id, :student, :student_id, :status, :created_at, :updated_at,)
 
     def student
       object.user&.full_name
+    end
+
+    def student_id
+      object.user&.id
     end
 
   end
