@@ -2,6 +2,11 @@ class Api::V1::EnrollmentsController < Api::ApplicationController
     before_action :find_enrollment, only: [:destroy, :update]
     before_action :authenticate_user!
 
+    def index
+      enrollments = Enrollment.order(created_at: :desc)
+      render(json: enrollments, each_serializer: EnrollmentSerializer)
+    end
+
     def create
         @course = Course.find params[:course_id]
         enrollment = Enrollment.new enrollment_params 
