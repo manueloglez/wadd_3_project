@@ -19,3 +19,19 @@
 nav {
   background: linear-gradient(to left, rgb(10, 114, 65), white);
 }
+
+
+h1 {
+  font-size: xx-large;
+  text-align: center;
+  color: #dfdfdf;
+  text-shadow: 4px 1px 10px #000, 
+              -4px 0 0px #000,
+               0px 4px 0 #fff;
+}
+
+p {
+  text-shadow: 10px 10px 12px #000, 
+  1px 1px 0 #fff;
+}
+
