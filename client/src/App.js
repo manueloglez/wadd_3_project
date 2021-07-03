@@ -3,6 +3,7 @@ import StudentPage from "./components/StudentPage";
 import Navbar from "./components/Navbar";
 import SignUp from "./components/login/SignUp";
 import SignIn from "./components/login/SignIn";
+import Welcome from "./components/Welcome";
 import './App.css'
 
 const App = () => {
@@ -17,6 +18,9 @@ const App = () => {
     </Switch>
     <Switch>
       <Route exact path="/SignUp" component={SignUp}/>
+    </Switch>
+    <Switch>
+      <Route exact path="/Welcome" component={Welcome}/>
     </Switch>
   </BrowserRouter>
   </div>
