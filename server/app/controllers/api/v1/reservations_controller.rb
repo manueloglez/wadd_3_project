@@ -3,7 +3,12 @@ class Api::V1::ReservationsController < Api::ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
       def index
-        reservations = Reservation.order(created_at: :desc)
+        if params[:facility_id]
+          @facility = Facility.find params[:facility_id]
+          reservations = @facility.reservations
+        else
+          reservations = Reservation.order(created_at: :desc)
+        end
         render(json: reservations, each_serializer: ReservationSerializer)
       end
 
