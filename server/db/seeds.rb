@@ -7,7 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+require 'date'
+
+FEATURESARRAY = ['Wifi', 'Projector', 'A/C', 'Parking', 'coffee bar', 'AV tech']
 PASSWORD = "supersecret"
+
+
+
+Reservation.destroy_all()
+Facility.destroy_all()
 Enrollment.destroy_all()
 Course.destroy_all()
 User.delete_all()
@@ -31,13 +39,14 @@ end
 
 users = User.all
 
+
 15.times do |x|
-    course = Course.create({
+  course = Course.create({
     name: Faker::Educator.course_name,
     topic: Faker::Educator.subject,
     user: users.sample,
-  })
-end
+    })
+  end
   courses = Course.all
 
   5.times do |x|
@@ -48,8 +57,37 @@ end
     })
   end
   enrollments = Enrollment.all
+  
+  5.times do |x|
+    Facility.create({
+      location: Faker::Address.full_address,
+      name: Faker::Educator.campus,
+      features: FEATURESARRAY.sample(3),
+      is_available: true,
+      user: super_user,
+    })
+  end
+  facilities = Facility.all
+
+  5.times do |x|
+    Reservation.create({
+      
+      start_time: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 4, format: :default), #=> "Tue, 16 Oct 2018 10:48:27 AM -05:00",
+      end_time: Faker::Time.between(from: DateTime.now + 5 , to: DateTime.now + 8, format: :default),
+      status: "pending",
+      facility: facilities.sample,
+      user: users.sample,
+    })
+  end
+  reservations = Reservation.all
+
+
+  
+
 
 puts Cowsay.say("Generated #{User.count} users", :ghostbusters)
 puts Cowsay.say("Sign in with #{super_user.email} and password: #{PASSWORD}", :cow)
 puts Cowsay.say("Generated #{courses.count}  courses!", :turtle)
 puts Cowsay.say("Generated #{enrollments.count}  enrollments!", :bunny)
+puts Cowsay.say("Generated #{facilities.count}  facilities!", :kitty)
+puts Cowsay.say("Generated #{reservations.count}  reservations!", :bunny)

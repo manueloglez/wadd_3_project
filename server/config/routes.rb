@@ -7,7 +7,7 @@ Rails.application.routes.draw do
         resources :enrollments, shallow: :true, only: [:create, :destroy, :update]
       end
       resources :facilities, only: [:create, :destroy, :update, :show, :index] do
-        resources :reservations, shallow: :true, only: [:create, :update, :destroy]
+        resources :reservations, shallow: :true, only: [:create, :update, :destroy, :index]
       end
       resources :enrollments, only: [:index]
       resources :reservations, only: [:index]
