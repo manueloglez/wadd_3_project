@@ -8,6 +8,9 @@ import SignUp from "./components/login/SignUp";
 import SignIn from "./components/login/SignIn";
 import Welcome from "./components/Welcome";
 import AuthRoute from './components/AuthRoute';
+import CCourses from "./components/CreatePages/CCourses";
+import CReservations from "./components/CreatePages/CReservations";
+import Cfacilities from "./components/CreatePages/Cfacilities";
 import { User, Session } from './requests';
 import './App.css'
 
@@ -49,6 +52,9 @@ const App = () => {
       <Route exact path="/admin" component={AdminPage}/>
       <Route exact path='/SignIn' render={(routeProps)=><SignIn {...routeProps} onSignIn={getCurrentUser}/>} />
       <Route exact path='/SignUp' render={(routeProps)=><SignUp {...routeProps} onSignUp={getCurrentUser}/>} />
+      <Route exact path='/CCourses' render={(routeProps)=><CCourses{...routeProps} onCCourses={getCurrentUser}/>} />
+      <Route exact path='/CReservations' render={(routeProps)=><CReservations {...routeProps} onCReservations={getCurrentUser}/>} />
+      <Route exact path='/Cfacilities' render={(routeProps)=><Cfacilities {...routeProps} onCfacilities={getCurrentUser}/>} />
     </Switch>
     <Switch>
       <Route exact path="/Welcome" component={Welcome}/>
