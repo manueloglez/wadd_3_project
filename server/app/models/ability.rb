@@ -37,6 +37,15 @@ class Ability
       course.user == user
     end
 
+    can :update, Enrollment do |enrollment|
+      enrollment.user == user || enrollment.course.user == user
+      
+    end
+
+    can :destroy, Enrollment do |enrollment|
+      enrollment.user == user
+    end
+
 
 
 

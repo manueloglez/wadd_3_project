@@ -3,11 +3,15 @@ import CourseDetails from './CourseDetails'
 import SearchBar from './SearchBar'
 
 
-const AllCourses = ({courses, title}) => {
+const AllCourses = ({courses, title, rerender}) => {
   const [input, setInput] = useState('');
 
   const updateCourseData = (value) => {
     setInput(value)
+  }
+
+  const handleRerender = () => {
+    rerender()
   }
 
   return <>
@@ -20,7 +24,7 @@ const AllCourses = ({courses, title}) => {
       : true)
     }).map(course => {
       return <>
-        <CourseDetails {...course}/>
+        <CourseDetails {...course} rerender={handleRerender}/>
       </>
     })}
   </>
