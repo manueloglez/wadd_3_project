@@ -8,9 +8,9 @@ class Ability
     #
       user ||= User.new # guest user (not logged in)
       alias_action :create, :read, :update, :destroy, to: :crud
-    #   if user.isAdmin?
-    #     can :crud, :Facility
-    #   end
+      if user.isAdmin?
+        can :crud, :all
+      end
     # #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
