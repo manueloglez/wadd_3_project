@@ -50,6 +50,15 @@ export const Course = {
       return res.json();
     });
   }, 
+  indexByUser(id) {
+    return fetch(`${BASE_URL}/users/${id}/courses`, {
+      headers: {
+        "Cache-Control": "no-cache",
+      },
+    }).then((res) => {
+      return res.json();
+    });
+  },
   enroll(id) {
     return fetch(`${BASE_URL}/courses/${id}/enrollments`, {
       method: "POST",
@@ -133,5 +142,65 @@ export const Enrollment = {
     })
       .then((res) => res.json())
       .catch(console.error);
+  }
+}
+
+export const Reservation = {
+  index() {
+    return fetch(`${BASE_URL}/reservations`, {
+      method: "GET", 
+      headers: {
+        "Cache-Control": "no-cache",
+      },
+    }).then(res => res.json())
+  },
+  indexByUser(id) {
+    return fetch(`${BASE_URL}/users/${id}/reservations`, {
+      headers: {
+        "Cache-Control": "no-cache",
+      },
+    }).then((res) => {
+      return res.json();
+    });
+  },
+  update(id, params) {
+    return fetch(`${BASE_URL}/reservations/${id}`, {
+      method: "PATCH",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(params),
+    })
+      .then((res) => res.json())
+      .catch(console.error);
+  },
+  delete(id) {
+    return fetch(`${BASE_URL}/reservations/${id}`, {
+      method: "DELETE",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => res.json())
+  },
+}
+
+export const Facility = {
+  index() {
+    return fetch(`${BASE_URL}/facilities`, {
+      method: "GET", 
+      headers: {
+        "Cache-Control": "no-cache",
+      },
+    }).then(res => res.json())
+  },
+  show(id) {
+    return fetch(`${BASE_URL}/facilities/${id}`, {
+      method: "GET", 
+      headers: {
+        "Cache-Control": "no-cache",
+      },
+    }).then(res => res.json())
   }
 }

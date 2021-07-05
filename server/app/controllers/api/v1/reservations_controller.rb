@@ -3,9 +3,9 @@ class Api::V1::ReservationsController < Api::ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
       def index
-        if params[:facility_id]
-          @facility = Facility.find params[:facility_id]
-          reservations = @facility.reservations
+        if params[:user_id]
+          @user = User.find params[:user_id]
+          reservations = @user.reservations
         else
           reservations = Reservation.order(created_at: :desc)
         end
