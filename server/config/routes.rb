@@ -6,11 +6,17 @@ Rails.application.routes.draw do
    
         resources :enrollments, shallow: :true, only: [:create, :destroy, :update]
       end
+      resources :facilities, only: [:create, :destroy, :update, :show, :index] do
+        resources :reservations, shallow: :true, only: [:create, :update, :destroy, :index]
+      end
       resources :enrollments, only: [:index]
+      resources :reservations, only: [:index]
       resource :session, only: [:create, :destroy]
       get("/current_user", to: "sessions#get_current_user")
 
       resources :users, only: [:create] do
+        resources :courses, only: [:index]
+        resources :reservations, only: [:index]
         get :current, on: :collection
       end
 

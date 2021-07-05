@@ -8,12 +8,10 @@ class Ability
     #
       user ||= User.new # guest user (not logged in)
       alias_action :create, :read, :update, :destroy, to: :crud
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
+    #   if user.isAdmin?
+    #     can :crud, :Facility
     #   end
-    #
+    # #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
@@ -39,14 +37,26 @@ class Ability
 
     can :update, Enrollment do |enrollment|
       enrollment.user == user || enrollment.course.user == user
-      
     end
 
     can :destroy, Enrollment do |enrollment|
       enrollment.user == user
     end
 
+    can :destroy, Reservation do |reservation|
+      reservation.user == user
+    end
 
+    can :update, Reservation do |reservation|
+      reservation.user == user || reservation.facility.user == user
+    end
+
+    can :update, Facility do |facility|
+      facility.user == user 
+    end
+    can :destroy, Facility do |facility|
+      facility.user == user 
+    end
 
 
   end
