@@ -5,9 +5,9 @@ import EnrollmentDetails from './EnrollmentDetails'
 const EnrollmentsComponent = ({enrollments, rerender}) => {
   return <>
     <h1>Pending Approvals</h1>
-    {enrollments.filter(e => e.status === "pending").map(enrollment => {
+    {enrollments.filter(e => e.status === "pending").map((enrollment, id) => {
       return <>
-        <EnrollmentDetails {...enrollment} rerender={rerender}/>
+        <EnrollmentDetails key={id} {...enrollment} rerender={rerender}/>
       </>
     })}
   </>

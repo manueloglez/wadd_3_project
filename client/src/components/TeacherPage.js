@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import facilityList from '../data/facilities'
-import {Enrollment, Course} from '../requests'
-import reservations from '../data/reservations'
+import {Enrollment, Course, Reservation, Facility} from '../requests'
 import FacilitiesComponent from './FacilitiesComponent'
 import EnrollmentsComponent from './EnrollmentsComponent'
 import ReservationsComponent from './ReservationsComponent'
 import AllCourses from './AllCourses'
 
 const TeacherPage = ({currentUser}) => {
-  const [state, setState] = useState({facilities: [], courses: [], enrollments: []})
+  const [state, setState] = useState({facilities: [], courses: [], enrollments: [], reservations: []})
   const [trigger, setTrigger] = useState(true)
 
   const rerender = () => {
@@ -17,23 +15,36 @@ const TeacherPage = ({currentUser}) => {
 
   useEffect(() => {
     if(trigger){
-    Course.index().then(courseList => {
-      setState(state => {
-        return({
-          ...state,
-          facilities: facilityList,
-          courses: courseList
+      Facility.index().then(facilities => {
+        setState(state => {
+          return {
+            ...state,
+            facilities
+          }})
+      })
+      Course.indexByUser(currentUser.id).then(courseList => {
+        setState(state => {
+          return({
+            ...state,
+            courses: courseList
+          })
         })
       })
-    })
-    Enrollment.index().then(enrollments => {
-      console.log(enrollments)
-      setState(state => {
-        return {
-          ...state,
-          enrollments
-        }})
-    })
+      Enrollment.index().then(enrollments => {
+        setState(state => {
+          return {
+            ...state,
+            enrollments
+          }})
+      })
+      Reservation.indexByUser(currentUser.id).then( reservations => {
+        console.log(reservations)
+        setState(state => {
+          return({
+            ...state,
+            reservations
+          })})
+        })
     }
     return () => {setTrigger(false)}
   })
@@ -41,10 +52,10 @@ const TeacherPage = ({currentUser}) => {
   return <main>
     <h1>Teacher's Dashboard</h1>
     <div className="teacher-dashboard">
-      <AllCourses courses={state.courses.filter(c => c.teacher.id === currentUser.id)}/>
+      <AllCourses courses={state.courses}/>
       <FacilitiesComponent facilities={state.facilities}/>
       <EnrollmentsComponent enrollments={state.enrollments} rerender={rerender}/> 
-      <ReservationsComponent reservations={reservations} title="My Reservations"/>
+      <ReservationsComponent reservations={state.reservations} title="My Reservations" rerender={rerender}/>
     </div>
   </main>
 }

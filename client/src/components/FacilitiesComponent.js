@@ -18,9 +18,9 @@ const FacilitiesComponent = ({facilities}) => {
       facility.name.toLowerCase().includes(input.toLowerCase()) ||
       facility.location.toLowerCase().includes(input.toLowerCase())
       : true)
-    }).map(facility => {
+    }).map((facility, id) => {
       return <>
-        <FacilityDetails {...facility}/>
+        <FacilityDetails key={id} {...facility}/>
       </>
     })}
   </>
