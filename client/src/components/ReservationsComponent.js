@@ -2,16 +2,12 @@ import React, {useState, useEffect} from 'react'
 import ReservationDetails from './ReservationDetails'
 
 
-const ReservationsComponent = ({reservations, title, adminView}) => {
-  const currentUser = {
-    id: 1,
-    isAdmin: true
-  }
+const ReservationsComponent = ({reservations, title, adminView, rerender}) => {
   return <>
     <h1>{title}</h1>
-    {reservations.map(reservation => {
+    {reservations.map((reservation, id) => {
       return <>
-        <ReservationDetails currentUser={currentUser} {...reservation} adminView={adminView}/>
+        <ReservationDetails key={id} {...reservation} rerender={rerender} adminView={adminView}/>
       </>
     })}
   </>

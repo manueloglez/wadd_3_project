@@ -4,7 +4,12 @@ class Api::V1::CoursesController < Api::ApplicationController
   before_action :authorize!, only: [:update, :destroy]
   
   def index
-    courses = Course.order(created_at: :desc)
+    if params[:user_id]
+      @user = User.find params[:user_id]
+      courses = @user.courses
+    else
+      courses = Course.order(created_at: :desc)
+    end
     render(json: courses, each_serializer: CourseSerializer)
   end
 
