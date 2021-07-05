@@ -6,6 +6,7 @@ import AdminPage from './components/AdminPage';
 import Navbar from "./components/Navbar";
 import SignUp from "./components/login/SignUp";
 import SignIn from "./components/login/SignIn";
+import Welcome from "./components/Welcome";
 import AuthRoute from './components/AuthRoute';
 import { User, Session } from './requests';
 import './App.css'
@@ -48,6 +49,9 @@ const App = () => {
       <Route exact path="/admin" component={AdminPage}/>
       <Route exact path='/SignIn' render={(routeProps)=><SignIn {...routeProps} onSignIn={getCurrentUser}/>} />
       <Route exact path='/SignUp' render={(routeProps)=><SignUp {...routeProps} onSignUp={getCurrentUser}/>} />
+    </Switch>
+    <Switch>
+      <Route exact path="/Welcome" component={Welcome}/>
     </Switch>
   </BrowserRouter>
   </div>

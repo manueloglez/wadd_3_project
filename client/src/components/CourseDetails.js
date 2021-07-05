@@ -15,7 +15,7 @@ const CourseDetails = (props) => {
   }
 
   return <div className="course-details-container">
-    <h3>{props.name}</h3>
+    <h4>{props.name}</h4>
     <p>{props.enrollment ? props.enrollment.status : ''}</p>
     {props.enrollment?.status ? 
       <button onClick={() => unenroll(props.enrollment.id)}>Unenroll</button> : 

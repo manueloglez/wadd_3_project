@@ -15,7 +15,7 @@ const AllCourses = ({courses, title, rerender}) => {
   }
 
   return <>
-    <h1>{title}</h1>
+    <h2>{title}</h2>
     <SearchBar input={input} updateCourseData={updateCourseData}/>
     {courses.filter(c => {
       return(input !== '' ? 
