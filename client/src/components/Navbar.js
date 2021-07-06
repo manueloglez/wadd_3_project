@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from "react-router-dom";
+import Button from 'react-bootstrap/Button'
 
 
 const Navbar = (props) => {
@@ -15,7 +16,7 @@ const Navbar = (props) => {
     <NavLink style={{ marginRight: "20px" }}  to="/admin">Admin Page</NavLink> : ''}
 
     {currentUser ? 
-    <button onClick={destroySession}>Sign Out</button> : 
+    <Button className="btn-sm" onClick={destroySession}>Sign Out</Button> : 
     <> 
       <NavLink style={{ marginRight: "20px" }} to="/SignIn">
         Sign in

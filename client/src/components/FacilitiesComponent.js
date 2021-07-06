@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import FacilityDetails from './FacilityDetails'
 import SearchBar from './SearchBar'
 import { Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button';
+
 
 
 const FacilitiesComponent = ({facilities, currentUser}) => {
@@ -12,9 +14,8 @@ const FacilitiesComponent = ({facilities, currentUser}) => {
   }
 
   return <>
-    <h1>Facilities List
-      {currentUser?.isAdmin ? <Link to='/facility/new'><button>Create Facility</button></Link> : ''}
-    </h1>
+    <h2>Facilities List</h2>
+    {currentUser?.isAdmin ? <Link to='/facility/new'><Button>Create Facility</Button></Link> : ''}
     <SearchBar text="Search Facilities" input={input} onChange={updateFacilityData}/>
     {facilities.filter(facility => {
       return(input !== '' ? 
