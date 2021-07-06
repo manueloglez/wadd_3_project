@@ -1,11 +1,34 @@
-import React from 'react'
-import { User } from '../../requests'
+import React, { useEffect, useState } from 'react'
+import { Reservation, Facility } from '../../requests'
+
 
 const CReservation= (props) => {
+  const [state, setState] = useState([])
+  useEffect(() => {
+    Facility.index().then(facilities => {
+      setState(facilities)
+    })
+  }, [])
 
   const handleSubmit = event => {
     const { currentTarget } = event
     event.preventDefault()
+
+    const formData = new FormData(currentTarget)
+    const facilityId = formData.get('Facility')
+
+    const params = {
+      status: 'pending',
+      start_time: formData.get('Start Date'),
+      end_time: formData.get('End Date'),
+    }
+    Reservation.create(facilityId, params).then(res => {
+      if (res?.id) {
+        props.history.push('/teachers')
+      } else {
+        console.log(res)
+      } 
+    })
   }
 
     return <main>
@@ -21,31 +44,24 @@ const CReservation= (props) => {
               <div className="input-group-prepend">
                 <span className="input-group-text"></span>
               </div>
-              <input type="text" className="form-control" placeholder=" Facility " name="Facility" id="Facility"/>
+              <select name="Facility" id="Facility">
+                {state.map(f => <option value={f.id}>{f.name}</option>)}
+                <option></option>
+              </select>
             </div>
             <div className="input-group mb-3">
               <div className="input-group-prepend">
                 <span className="input-group-text"></span>
               </div>
-              <br></br>
-            <label> Start Date of Reservation
-                    <input className="form-control" type="date" name="Start Date" value="Today"/> </label>
-                    <label for="starttime">Start time:-</label>
-                    <input type="time" id="starttime" name="starttime"
-       min="09:00" max="18:00" required></input>
-                    
+            <label> Start Date of Reservation </label>
+              <input className="form-control" type="datetime-local" name="Start Date" required/>
                     </div>
-                    <br></br>
                     <div className="input-group mb-3">
               <div className="input-group-prepend">
                 <span className="input-group-text"></span>
               </div>
-            <label>End Date of Reservation
-                    <input className="form-control" type="date" name="End Date" data-value="7" value="After one week"/></label>
-                    <label for="endtime">End time:-</label>
-                    <input type="time" id="endtime" name="endtime"
-       min="09:00" max="18:00" required></input>
-                    <br></br>
+            <label>End Date of Reservation</label>
+                    <input className="form-control" type="datetime-local" name="End Date" data-value="7" required/>
             </div>
 
 

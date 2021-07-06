@@ -1,11 +1,28 @@
 import React from 'react'
-import { User } from '../../requests'
+import { Facility } from '../../requests'
 
 const Cfacility = (props) => {
 
   const handleSubmit = event => {
     const { currentTarget } = event
     event.preventDefault()
+
+    const formData = new FormData(currentTarget)
+    const features = formData.get("Features").split(',').map(f => f.trim())
+
+    const params = {
+      name: formData.get('facility'),
+      location: formData.get('address'),
+      features
+    }
+    console.log(params)
+    Facility.create(params).then(res => {
+      if (res?.id) {
+        props.history.push('/admin')
+      } else {
+        console.log(res)
+      } 
+    })
   }
 
     return <main>

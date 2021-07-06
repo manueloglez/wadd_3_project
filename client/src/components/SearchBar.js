@@ -1,20 +1,15 @@
 import React from 'react';
+import Form from 'react-bootstrap/Form'
 
-const SearchBar = ({onChange}) => {
-  const BarStyling = {width:"20rem",background:"#F2F1F9", border:"none", padding:"0.5rem"};
+const SearchBar = ({onChange, text}) => {
   
   function handleCourseInput(event) {
     const { value } = event.currentTarget;
     onChange(value);
   }
 
-  return (
-    <input 
-     style={BarStyling}
-     placeholder={"Search Course"}
-     onChange={handleCourseInput}
-    />
-  );
+  return <Form.Control type="text" placeholder={text} onChange={handleCourseInput}/>
+  ;
 }
 
 export default SearchBar

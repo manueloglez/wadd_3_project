@@ -4,6 +4,8 @@ import FacilitiesComponent from './FacilitiesComponent'
 import EnrollmentsComponent from './EnrollmentsComponent'
 import ReservationsComponent from './ReservationsComponent'
 import AllCourses from './AllCourses'
+import Card from 'react-bootstrap/Card'
+import { Container, Row, Col } from 'react-bootstrap'
 
 const TeacherPage = ({currentUser}) => {
   const [state, setState] = useState({facilities: [], courses: [], enrollments: [], reservations: []})
@@ -50,13 +52,31 @@ const TeacherPage = ({currentUser}) => {
   })
 
   return <main>
-    <h1>Teacher's Dashboard</h1>
-    <div className="teacher-dashboard">
-      <AllCourses courses={state.courses}/>
-      <FacilitiesComponent facilities={state.facilities}/>
-      <EnrollmentsComponent enrollments={state.enrollments} rerender={rerender}/> 
-      <ReservationsComponent reservations={state.reservations} title="My Reservations" rerender={rerender}/>
-    </div>
+    <h1 className="m-3">Teacher's Dashboard</h1>
+    <Container>
+      <Row>
+        <Col>
+        <Card className="p-3">
+          <AllCourses courses={state.courses} currentUser={currentUser} title={'My classes'}/>
+        </Card>
+        </Col>
+        <Col>
+          <Card className="p-3">
+          <FacilitiesComponent facilities={state.facilities} currentUser={currentUser}/>
+          </Card>
+        </Col>
+        <Col>
+          <Card className="p-3">
+          <EnrollmentsComponent enrollments={state.enrollments.filter(e => e.teacher_id === currentUser.id)} rerender={rerender}/> 
+          </Card>
+        </Col>
+        <Col>
+          <Card className="p-3">
+          <ReservationsComponent reservations={state.reservations} title="My Reservations" rerender={rerender}/>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   </main>
 }
 

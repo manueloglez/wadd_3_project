@@ -9,6 +9,10 @@ class EnrollmentSerializer < ActiveModel::Serializer
   def student_id
     object.user&.id
   end
+  
+  def teacher_id
+    object.course.user&.id
+  end
 
   def teacher_id
     object.course.user&.id

@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import Card from 'react-bootstrap/Card'
+import { Container, Row, Col } from 'react-bootstrap'
 import {Course} from '../requests'
 import AllCourses from './AllCourses'
 
@@ -29,15 +31,23 @@ const StudentPage = ({currentUser}) => {
   })
 
   return <main>
-    <h2>Student's Dashboard</h2>
-    <div className="courses-dashboard">
-      <div className="courses-container" >
-        <AllCourses title="My Courses" courses={state.courses.filter(c => c.enrollment?.status)} currentUser={currentUser} rerender={rerender}/>
-      </div>
-      <div className="courses-container" >
-        <AllCourses title="All Courses" className="courses-container" courses={state.courses} rerender={rerender}/>
-      </div>
-    </div>
+    <h1 className="m-3">Student's Dashboard</h1>
+    <Container>
+      <Row>
+        <Col>
+        <Card className="p-3">
+          <AllCourses title="My Courses" courses={state.courses.filter(c => c.enrollment?.status)} currentUser={currentUser} rerender={rerender}/>
+        </Card>
+        </Col>
+        <Col>
+          <Card className="p-3">
+            <AllCourses title="All Courses" className="courses-container" courses={state.courses} rerender={rerender}/>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+        
+        
   </main>
 }
 

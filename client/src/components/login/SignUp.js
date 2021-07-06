@@ -52,22 +52,22 @@ const SignUp = (props) => {
               <div className="input-group-prepend">
                 <span className="input-group-text"></span>
               </div>
-              <input type="text" className="form-control" placeholder="E-mail" name="email" id="email"/>
+              <input type="email" className="form-control" placeholder="E-mail" name="email" id="email"/>
             </div>
             <div className="input-group mb-3">
               <div className="input-group-prepend">
                 <span className="input-group-text"></span>
               </div>
-              <input type="text" className="form-control" placeholder="Password" name="password" id="password"/>
+              <input type="password" className="form-control" placeholder="Password" name="password" id="password"/>
             </div>
             <div className="input-group mb-3">
               <div className="input-group-prepend">
                 <span className="input-group-text"></span>
               </div>
-              <input type="text" className="form-control" placeholder=" Confirm Password" name="password_confirmation" id="password_confirmation"/>
+              <input type="password" className="form-control" placeholder=" Confirm Password" name="password_confirmation" id="password_confirmation"/>
             </div>
             <div> <div>
-                    <input type="radio" value="Student" name="Select" /> Student
+                    <input type="radio" value="Student" name="Select" defaultChecked/> Student
                     <input type="radio" value="Teacher" name="Select" /> Teacher
                   </div></div>
             <button type="submit" className="btn btn-secondary btn-block">Sign Up</button>

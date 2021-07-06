@@ -184,6 +184,18 @@ export const Reservation = {
       },
     }).then((res) => res.json())
   },
+  create(id, params) {
+    return fetch(`${BASE_URL}/facilities/${id}/reservations`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(params),
+    })
+      .then((res) => res.json())
+      .catch(console.error);
+  }
 }
 
 export const Facility = {
@@ -202,5 +214,17 @@ export const Facility = {
         "Cache-Control": "no-cache",
       },
     }).then(res => res.json())
+  },
+  create(params) {
+    return fetch(`${BASE_URL}/facilities`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(params),
+    })
+      .then((res) => res.json())
+      .catch(console.error);
   }
 }

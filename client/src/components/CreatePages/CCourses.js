@@ -1,11 +1,24 @@
 import React from 'react'
-import { User } from '../../requests'
+import { Course } from '../../requests'
 
 const CCourse = (props) => {
 
   const handleSubmit = event => {
     const { currentTarget } = event
     event.preventDefault()
+
+    const formData = new FormData(currentTarget)
+    const params = {
+      name: formData.get('name'),
+      topic: formData.get('topic'),
+    }
+    Course.create(params).then(res => {
+      if (res?.id) {
+        props.history.push('/teachers')
+      } else {
+        console.log(res)
+      } 
+    })
   }
 
     return <main>
@@ -28,10 +41,10 @@ const CCourse = (props) => {
                 <span className="input-group-text"></span>
               </div>
               <br></br>
-             <label for='Topics'>-: Choose Topic for your Course :- </label>
-              <select  className="form-control"  name="Topic" id="Topics">
-                   <option value="">-:none:-</option>
-                   <option value="MatheMatics">MatheMatics</option>
+             <label for='topic'>Choose Topic for your Course </label>
+              <select  className="form-control"  name="topic" id="topic">
+                   <option value="">None</option>
+                   <option value="Mathematics">Mathematics</option>
                    <option value="Science">Science</option>
                    <option value="Technology">Technology</option>
                    <option value="Art, Design & Creativity">Art, Design & Creativity</option>
