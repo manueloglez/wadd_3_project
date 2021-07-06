@@ -35,3 +35,7 @@ p {
   1px 1px 0 #fff;
 }
 
+ h2 {
+  text-shadow: 10px 10px 12px #000, 
+  1px 1px 0 rgb(39, 18, 18);
+}
