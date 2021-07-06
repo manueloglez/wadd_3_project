@@ -1,5 +1,5 @@
 class EnrollmentSerializer < ActiveModel::Serializer
-  attributes(:id, :student, :student_id, :status, :created_at, :updated_at,)
+  attributes(:id, :student, :student_id, :status, :created_at, :updated_at, :teacher)
   belongs_to :course
 
   def student
@@ -8,6 +8,10 @@ class EnrollmentSerializer < ActiveModel::Serializer
 
   def student_id
     object.user&.id
+  end
+
+  def teacher
+    object.course.user&.full_name
   end
 
 end
