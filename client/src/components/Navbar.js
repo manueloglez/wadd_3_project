@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = (props) => {
   const {currentUser, destroySession} = props
   return  <nav style={{padding: "10px",display: "flex", }}>
-    <NavLink style={{ marginRight: "20px" }}  to="/">Home</NavLink>
+    <NavLink style={{ marginRight: "20px" }}  to="/Welcome">Welcome</NavLink>
     {currentUser ? <NavLink  style={{ marginRight: "20px" }}  to="/students">Student Page</NavLink> : ''}
 
     {currentUser && currentUser.isTeacher ? 

@@ -8,7 +8,7 @@ const ReservationsComponent = ({reservations, title, adminView}) => {
     isAdmin: true
   }
   return <>
-    <h1>{title}</h1>
+    <h2>{title}</h2>
     {reservations.map(reservation => {
       return <>
         <ReservationDetails currentUser={currentUser} {...reservation} adminView={adminView}/>

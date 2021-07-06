@@ -11,7 +11,7 @@ const FacilitiesComponent = ({facilities}) => {
   }
 
   return <>
-    <h1>Facilities List</h1>
+    <h2>Facilities List</h2>
     <SearchBar input={input} onChange={updateFacilityData}/>
     {facilities.filter(facility => {
       return(input !== '' ? 

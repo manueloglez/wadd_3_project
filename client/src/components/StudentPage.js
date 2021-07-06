@@ -29,7 +29,7 @@ const StudentPage = ({currentUser}) => {
   })
 
   return <main>
-    <h2>Student's Dashboard</h2>
+    <h1>Student's Dashboard</h1>
     <div className="courses-dashboard">
       <div className="courses-container" >
         <AllCourses title="My Courses" courses={state.courses.filter(c => c.enrollment?.status)} currentUser={currentUser} rerender={rerender}/>
