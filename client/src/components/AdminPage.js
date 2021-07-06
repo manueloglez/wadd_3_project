@@ -34,7 +34,7 @@ const AdminPage = ({currentUser}) => {
   return <main>
     <h1>Admin's Dashboard</h1>
     <div className="admin-dashboard">
-      <FacilitiesComponent facilities={state.facilities}/>
+      <FacilitiesComponent facilities={state.facilities} currentUser={currentUser}/>
       <ReservationsComponent 
         reservations={state.reservations.filter(r => r.status ==='pending')} 
         title="Pending Approvals" 
@@ -42,7 +42,7 @@ const AdminPage = ({currentUser}) => {
         adminView={true}
       />
       <ReservationsComponent 
-        reservations={state.reservations.filter(r => r.status === 'active' && (new Date(r.end_time) > new Date()))} 
+        reservations={state.reservations.filter(r => r.status === 'approved' && (new Date(r.end_time) > new Date()))} 
         title="Active Reservations" 
         rerender={rerender}
         adminView={false}

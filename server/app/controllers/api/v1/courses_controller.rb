@@ -24,7 +24,7 @@ class Api::V1::CoursesController < Api::ApplicationController
       render json: { id: course.id }
     else
       render(
-        json: { status: 422 },
+        json: { errors: course.errors },
         status: 422,
       )
     end

@@ -50,7 +50,9 @@ const App = () => {
       <AuthRoute exact path="/teachers" 
         isAuthenticated={state.user}
         component={TeacherPage}/>
-      <Route exact path="/admin" component={AdminPage}/>
+      <AuthRoute exact path="/admin" 
+        isAuthenticated={state.user}
+        component={AdminPage}/>
       <Route exact path='/SignIn' render={(routeProps)=><SignIn {...routeProps} onSignIn={getCurrentUser}/>} />
       <Route exact path='/SignUp' render={(routeProps)=><SignUp {...routeProps} onSignUp={getCurrentUser}/>} />
       <Route exact path='/course/new' render={(routeProps)=><CCourses{...routeProps} onCCourses={getCurrentUser}/>} />

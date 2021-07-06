@@ -18,13 +18,12 @@ const SignUp = (props) => {
       password_confirmation: formData.get('password_confirmation'),
       isTeacher,
     }
-    console.log(params)
-    // User.create(params).then(res => {
-    //   if (res?.id) {
-    //     onSignUp()
-    //     props.history.push('/students')
-    //   }
-    // })
+    User.create(params).then(res => {
+      if (res?.id) {
+        onSignUp()
+        props.history.push('/students')
+      }
+    })
   }
     return <main>
       <h1>Sign Up</h1>
