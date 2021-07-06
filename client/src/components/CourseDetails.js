@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button';
 import { Course, Enrollment } from '../requests'
 
 const CourseDetails = (props) => {
@@ -14,14 +15,12 @@ const CourseDetails = (props) => {
     })
   }
 
-  return <div className="course-details-container">
-    <h4>{props.name}</h4>
-    <p>{props.enrollment ? props.enrollment.status : ''}</p>
+  return <>
+    <h3>{props.name}</h3>
     {props.enrollment?.status ? 
-      <button onClick={() => unenroll(props.enrollment.id)}>Unenroll</button> : 
-      <button onClick={() => enrollToCourse(props.id)}>Enroll</button>}
-  </div>
-
+      <Button variant="danger" className="btn-sm" onClick={() => unenroll(props.enrollment.id)}>Unenroll</Button> : 
+      <Button variant="primary" className="btn-sm" onClick={() => enrollToCourse(props.id)}>Enroll</Button>}
+  </>
 }
 
 export default CourseDetails

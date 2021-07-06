@@ -59,9 +59,7 @@ const App = () => {
       <Route exact path='/reservation/new' render={(routeProps)=><CReservations {...routeProps} onCReservations={getCurrentUser}/>} />
       <Route exact path='/facility/new' render={(routeProps)=><Cfacilities {...routeProps} onCfacilities={getCurrentUser}/>} />
       <Route exact path='/facility/:id' render={(routeProps)=><FacilityShowPage {...routeProps}/>} />
-    </Switch>
-    <Switch>
-      <Route exact path="/Welcome" component={Welcome}/>
+      <Route exact path="/" component={Welcome}/>
     </Switch>
   </BrowserRouter>
   </div>
