@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import CourseDetails from './CourseDetails'
 import SearchBar from './SearchBar'
+import { Link } from 'react-router-dom'
 
 
 const AllCourses = ({courses, title, rerender}) => {
@@ -16,7 +17,8 @@ const AllCourses = ({courses, title, rerender}) => {
 
   return <>
     <h2>{title}</h2>
-    <SearchBar input={input} updateCourseData={updateCourseData}/>
+    <Link to='/course/new'><button>Create Course</button></Link>
+    <SearchBar text="Search Courses" input={input} onChange={updateCourseData}/>
     {courses.filter(c => {
       return(input !== '' ? 
       c.name.toLowerCase().includes(input.toLowerCase()) ||

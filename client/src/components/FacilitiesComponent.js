@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import FacilityDetails from './FacilityDetails'
 import SearchBar from './SearchBar'
+import { Link } from 'react-router-dom'
 
 
-const FacilitiesComponent = ({facilities}) => {
+const FacilitiesComponent = ({facilities, currentUser}) => {
   const [input, setInput] = useState('');
 
   const updateFacilityData = (value) => {
@@ -11,8 +12,10 @@ const FacilitiesComponent = ({facilities}) => {
   }
 
   return <>
-    <h1>Facilities List</h1>
-    <SearchBar input={input} onChange={updateFacilityData}/>
+    <h1>Facilities List
+      {currentUser?.isAdmin ? <Link to='/facility/new'><button>Create Facility</button></Link> : ''}
+    </h1>
+    <SearchBar text="Search Facilities" input={input} onChange={updateFacilityData}/>
     {facilities.filter(facility => {
       return(input !== '' ? 
       facility.name.toLowerCase().includes(input.toLowerCase()) ||

@@ -53,8 +53,8 @@ const TeacherPage = ({currentUser}) => {
     <h1>Teacher's Dashboard</h1>
     <div className="teacher-dashboard">
       <AllCourses courses={state.courses}/>
-      <FacilitiesComponent facilities={state.facilities}/>
-      <EnrollmentsComponent enrollments={state.enrollments} rerender={rerender}/> 
+      <FacilitiesComponent facilities={state.facilities} currentUser={currentUser}/>
+      <EnrollmentsComponent enrollments={state.enrollments.filter(e => e.teacher_id === currentUser.id)} rerender={rerender}/> 
       <ReservationsComponent reservations={state.reservations} title="My Reservations" rerender={rerender}/>
     </div>
   </main>

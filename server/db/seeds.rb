@@ -49,7 +49,7 @@ users = User.all
   end
   courses = Course.all
 
-  5.times do |x|
+  30.times do |x|
     Enrollment.create({
       status: "pending",
       course: courses.sample,
@@ -58,7 +58,7 @@ users = User.all
   end
   enrollments = Enrollment.all
   
-  5.times do |x|
+  6.times do |x|
     Facility.create({
       location: Faker::Address.full_address,
       name: Faker::Educator.campus,
@@ -69,7 +69,7 @@ users = User.all
   end
   facilities = Facility.all
 
-  5.times do |x|
+  20.times do |x|
     Reservation.create({
       
       start_time: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 4, format: :default), #=> "Tue, 16 Oct 2018 10:48:27 AM -05:00",

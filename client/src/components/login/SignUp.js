@@ -18,12 +18,13 @@ const SignUp = (props) => {
       password_confirmation: formData.get('password_confirmation'),
       isTeacher,
     }
-    User.create(params).then(res => {
-      if (res?.id) {
-        onSignUp()
-        props.history.push('/students')
-      }
-    })
+    console.log(params)
+    // User.create(params).then(res => {
+    //   if (res?.id) {
+    //     onSignUp()
+    //     props.history.push('/students')
+    //   }
+    // })
   }
     return <main>
       <h1>Sign Up</h1>
@@ -67,7 +68,7 @@ const SignUp = (props) => {
               <input type="text" className="form-control" placeholder=" Confirm Password" name="password_confirmation" id="password_confirmation"/>
             </div>
             <div> <div>
-                    <input type="radio" value="Student" name="Select" /> Student
+                    <input type="radio" value="Student" name="Select" defaultChecked/> Student
                     <input type="radio" value="Teacher" name="Select" /> Teacher
                   </div></div>
             <button type="submit" className="btn btn-secondary btn-block">Sign Up</button>

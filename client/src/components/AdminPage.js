@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import {Reservation, Facility} from '../requests'
-import facilityList from '../data/facilities'
-import reservations from '../data/reservations'
 import FacilitiesComponent from './FacilitiesComponent'
 import ReservationsComponent from './ReservationsComponent'
 
@@ -44,7 +42,7 @@ const AdminPage = ({currentUser}) => {
         adminView={true}
       />
       <ReservationsComponent 
-        reservations={state.reservations} 
+        reservations={state.reservations.filter(r => r.status === 'active' && (new Date(r.end_time) > new Date()))} 
         title="Active Reservations" 
         rerender={rerender}
         adminView={false}
